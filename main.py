@@ -5,11 +5,15 @@
 # @Last Modified by:   Zhang Ze
 import uvicorn
 from fastapi import FastAPI
-
-from api import project, about
+from fastapi.middleware.cors import CORSMiddleware
 from api.router import api
+from common.config import load_toml, config_dir
 
 app = FastAPI()
+# 跨域
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"],
+                   allow_headers=["*"])
+
 # 方法一
 # app.include_router(project.router)
 # app.include_router(about.router)
@@ -24,5 +28,5 @@ async def test():
 
 
 if __name__ == '__main__':
-    uvicorn.run(app='main:app', host='127.0.0.1', port=9000, reload=True)
-    # uvicorn.run(api='main:api', host='127.0.0.1', port=8000, reload=False)
+    run = load_toml(config_dir)['run']
+    uvicorn.run(app='main:app', host=run['host'], port=run['port'], reload=False)

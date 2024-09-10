@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @File:config.py
+# @File:utils.py
 # @Author: Zhang Ze
 # @Date:   2024-09-05
 # @Last Modified by:   Zhang Ze
@@ -10,4 +10,3 @@ def load_toml(config_dir):
     with open(config_dir, 'rb') as f:
         config = tomllib.load(f)
     return config
-
