@@ -1,6 +1,6 @@
 # 数据库
 [mysql]
-db = ""
+db = "mysql+pymysql://root:zz99APPEAR,./@localhost:3306/db_gym"
 
 # 启动文件
 [run]
